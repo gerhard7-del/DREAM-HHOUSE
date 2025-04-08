@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Modern Villa</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="scripts/aframe.js"></script>
+  <script src="scripts/aframe.min.js"></script>
+  <script src="scripts/aframe-environment-component.min.js"></script>
+  <script src="scripts/aframe-extras.min.js"></script>
+</head>
+<body>
+  <a-scene>
+
+    <!-- ASSETS -->
+    <a-assets>
+      <a-asset-item id="home-model" src="assets/playboy/scene.gltf"></a-asset-item>
+      <a-asset-item id="jet-model" src="assets/jet/scene.gltf"></a-asset-item>
+      <a-asset-item id="pool-model" src="assets/pool_adult.glb"></a-asset-item>
+      <a-asset-item id="poolbed-model" src="assets/poolbed.glb"></a-asset-item>
+      <img id="sky-texture" src="textures/sky.jpg">
+      <img id="grass-texture" src="textures/grass1.jpeg">
+    </a-assets>
+
+    <!-- SKY -->
+    <a-sky src="#sky-texture" rotation="0 -90 0"></a-sky>
+
+    <!-- GROUND -->
+    <a-plane 
+      src="#grass-texture"
+      rotation="-90 0 0"
+      width="200" height="100"
+      repeat="50 50"
+      material="roughness: 1; metalness: 0">
+    </a-plane>
+
+    <!-- HOUSE MODEL -->
+    <a-gltf-model 
+      src="#home-model"
+      position="-40 0 -5"
+      scale="0.8 0.8 0.8"
+      rotation="0 0 0">
+    </a-gltf-model>
+
+    <!--Jet Model-->
+    <a-gltf-model
+        src="#jet-model"
+        position="30 0 7"
+        scale= "1 1 1"
+        rotation="0 0 0">
+    </a-gltf-model>
+
+    <!--car-->
+    <a-gltf-model
+        src="#pool-model"
+        position="3 -0.3 7"
+        scale="5 5 5 "
+        rotation="0 0 0">
+    </a-gltf-model>
+
+    <!--poolbed-->
+    <a-gltf-model
+        src="#poolbed-model"
+        position="3 0 7"
+        scale="5 5 5 "
+        rotation="0 0 0">
+    </a-gltf-model>
+
+    <a-entity position="30 0 7" id="pool-model"
+          ocean="density: 10; 
+                width: 8.6; 
+                depth: 14.3; 
+                speed: 0.5;
+                amplitude: 0.1;
+                amplitudeVariance: 0.05;
+                rippleHeight: 0.05;
+                rippleSpeed: 0.25"
+          material="color: #9CE3F9; 
+                   opacity: 0.7; 
+                   metalness: 0.2; 
+                   roughness: 0.5;
+                   transparent: true"
+          rotation="-90 0 0">
+</a-entity>
+
+    <!-- OPTIONAL LIGHTING -->
+    <a-entity light="type: ambient; intensity: 0.5"></a-entity>
+    <a-entity light="type: directional; intensity: 1"
+              position="5 10 7"></a-entity>
+
+    <!-- CAMERA -->
+    <a-entity camera position="0 2 8" look-controls wasd-controls></a-entity>
+
+  </a-scene>
+</body>
+</html>
